@@ -1,0 +1,115 @@
+---
+output:
+  html_document:
+    theme: spacelab
+---
+
+<a href="https://jhubiostatistics.shinyapps.io/recount/"><img src="https://raw.githubusercontent.com/leekgroup/recount-website/master/website/recount.png" align="center"></a>
+
+
+This repository contains the files for creating our video for the [Bioinformatics Peer Prize III hosted by Thinkable](https://bioinformatics-peer-prize-iii.thinkable.org/). The video was made using [ari](https://github.com/seankross/ari). The slides themselves were created with PowerPoint and then exported as PNG images. If you are interested in the slides, you can find most of them in this [recount workshop](https://speakerdeck.com/lcolladotor/bioconductor-2017-recount-workshop) presentation for the BioC2017 meeting.
+
+# Create video
+
+The following code setups the text for each of the slides and then creates the video using `ari::ari_spin()`. The code is fairly simple as you need to specify a character vector of length equal to the number of slides you are going to show. Further details on how to setup [ari](https://github.com/seankross/ari) are available in that package's README file. Note that you need to enable `polly` for your AWS account.
+
+```{r 'create video'}
+library('ari')
+
+ari_text <- c(
+    "Welcome to this short presentation about the recount2 project! This is our entry for the 2018 Bioinformatics Peer Prize hosted by Thinkable. Our entry paper is called Reproducible RNA-seq analysis using recount2 and was published on April 2017 with the DOI 10.1038/nbt.3838.",
+    "In RNA sequencing projects we start with millions of short reads illustrated as pink boxes here. A priori we do not know which part of the reference genome they come from, so for years researchers have been aligning these short reads to the genome. Once we know what parts of the genome are active, that is, the parts of the genome that are expressed, then we can compare across conditions that help us further our understanding of molecular biology.",
+    "RNA sequencing aligners can find the positions of the genome where these reads come from. In some cases, some reads are split in two locations shown by a long black line. Other times, only a portion of the read is used shown as purple boxes. This is just to show that this process is complex process that involves a substantial amount of computing power.",
+    "Some recent large RNA sequencing projects include the GTEx and the TCGA consortiums where about ten thousand samples have been sequenced in each project. GTEx focuses on studying expression across tissues for mostly healthy individuals and TCGA studies RNA expression in different cancers. Both are very interesting projects yet are time consuming to run through RNA sequencing aligners.",
+    "When most sequencing projects are completed they are shared via the Sequence Read Archive. From this website other researchers can access the data and use it to further their studies",
+    "This graph shows that the size of the SRA has been increasing very rapidly over the years. That is a lot of public data!",
+    "Members from our team developed a RNA sequencing aligner that can process many samples at a time and produce reduced representations of the data. This program is called Rail-RNA.",
+    "Rail-RNA is designed to run on the computing cloud such as on Amazon Web Services computers. This allowed us to align all the public human RNA sequencing data we could find including from the Sequence Read Archive, the GTEx and the TCGA projects. We uniformly processed over seventy thousand samples from over two thousand studies that contained over 4.4 trillion RNA sequencing reads.",
+    "Once we aligned this massive data, we produced a resource that we call recount2. The data is formatted in a way that it can be used directly by a bioinformatician, specially when combining the data with tools from the Bioconductor project.",
+    "From recount2, anyone can download summarized gene expression data at different feature types including genes, exons, exon-exon junctions and base pair coverage data. The resource also allows others to build new methods around it, such as for quantifying expressed transcripts or defining expressed regions.",
+    "The data is shared in a compact way that combines the information of the expression feature (blue box), the information about the samples (green box), and the measured expression levels (pink box). The sample information can be enriched from other sources including predictions.",
+    "One of the main features of the recount2 project is that it only takes a couple lines of code to download and start using the expression counts from any given project. This greatly improves the reproducibility of RNA sequencing projects and makes it easy for researchers to re use public data.",
+    "We hope that the recount2 project will be as useful as the original ReCount project for promoting the development of new biostatistical methods.",
+    "The fact that the data was processed uniformly for the recount2 project makes it easy to combine data from multiple studies and perform meta analyses.",
+    "This plot shows an example of the concordance when comparing two tissues using two studies (orange line) versus two incorrect scenarios.",
+    "The recount2 project was made possible thanks to a diversified team and multiple funding sources. Thank you for learning about our project and we hope that you will find it useful for your RNA sequencing projects!",
+    "If you are interested in further improving this project, please contact any of the primary investigators of the project."
+)
+
+## Find the slides in the correct order
+ari_files <- c(
+    dir('BioinfoPrize2018', recursive = TRUE, full.names = TRUE,
+        pattern = 'Slide0'),
+    dir('BioinfoPrize2018', recursive = TRUE, full.names = TRUE,
+        pattern = 'Slide1')
+)
+
+## Check that they match in length
+stopifnot(identical(length(ari_files), length(ari_text)))
+
+## Create the video
+ari_spin(
+    ari_files,
+    ari_text,
+    voice = "Joey"
+)
+```
+
+You can view the video we uploaded at [INSERTLINKHERE](INSERTLINKHERE).
+
+# References
+
+```{r 'setup', echo = FALSE, warning = FALSE, message = FALSE}
+## Bib setup
+library('knitcitations')
+library('BiocStyle')
+
+## Load knitcitations with a clean bibliography
+cleanbib()
+cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
+
+## Write bibliography information
+bibs <- c(
+    ari = citation('ari'),
+    BiocStyle = citation('BiocStyle'),
+    devtools = citation('devtools'),
+    knitcitations = citation('knitcitations'),
+    R = citation(),
+    recount = citation('recount')[1],
+    rmarkdown = citation('rmarkdown')
+)
+
+write.bibtex(bibs, file = 'index.bib')
+bib <- read.bibtex('index.bib')
+
+## Assign short names
+names(bib) <- names(bibs)
+```
+
+The analyses were made possible thanks to:
+
+* R `r citep(bib[['R']])`
+* `r CRANpkg('ari')` `r citep(bib[['ari']])`
+* `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`
+* `r CRANpkg('devtools')` `r citep(bib[['devtools']])`
+* `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`
+* `r Biocpkg('recount')` `r citep(bib[['recount']])`
+* `r CRANpkg('rmarkdown')` `r citep(bib[['rmarkdown']])`
+
+[Bibliography file](index.bib)
+
+```{r bibliography, results='asis', echo=FALSE, warning = FALSE, message = FALSE}
+## Print bibliography
+bibliography()
+```
+
+# Reproducibility
+
+```{r 'reproducibiolty information'}
+## Reproducibility info
+proc.time()
+message(Sys.time())
+library('devtools')
+options(width = 120)
+session_info()
+```
