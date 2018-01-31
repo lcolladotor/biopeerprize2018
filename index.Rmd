@@ -34,7 +34,7 @@ ari_text <- c(
     "When most sequencing projects are completed they are shared via the Sequence Read Archive. From this website other researchers can access the data and use it to further their studies",
     "This graph shows that the size of the SRA has been increasing very rapidly over the years. That is a lot of public data!",
     "Members from our team developed a RNA sequencing aligner that can process many samples at a time and produce reduced representations of the data. This program is called Rail-RNA.",
-    "Rail-RNA is designed to run on the computing cloud such as on Amazon Web Services computers. This allowed us to align all the public human RNA sequencing data we could find including from the Sequence Read Archive, the GTEx and the TCGA projects. We uniformly processed over seventy thousand samples from over two thousand studies that contained over 4.4 trillion RNA sequencing reads.",
+    "Rail-RNA is designed to run on the computing cloud such as on Amazon Web Services computers. This allowed us to align all the public human RNA sequencing data we could find including the Sequence Read Archive, the GTEx and the TCGA projects. We uniformly processed over seventy thousand samples from over two thousand studies that contained over 4.4 trillion RNA sequencing reads.",
     "Once we aligned this massive data, we produced a resource that we call recount2. The data is formatted in a way that it can be used directly by a bioinformatician, specially when combining the data with tools from the Bioconductor project.",
     "From recount2, anyone can download summarized gene expression data at different feature types including genes, exons, exon-exon junctions and base pair coverage data. The resource also allows others to build new methods around it, such as for quantifying expressed transcripts or defining expressed regions.",
     "The data is shared in a compact way that combines the information of the expression feature (blue box), the information about the samples (green box), and the measured expression levels (pink box). The sample information can be enriched from other sources including predictions.",
@@ -77,7 +77,7 @@ cleanbib()
 cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
 
 ## Write bibliography information
-bibs <- c(
+bib <- c(
     ari = citation('ari'),
     BiocStyle = citation('BiocStyle'),
     devtools = citation('devtools'),
@@ -87,11 +87,7 @@ bibs <- c(
     rmarkdown = citation('rmarkdown')
 )
 
-write.bibtex(bibs, file = 'index.bib')
-bib <- read.bibtex('index.bib')
-
-## Assign short names
-names(bib) <- names(bibs)
+write.bibtex(bib, file = 'index.bib')
 ```
 
 The analyses were made possible thanks to:
@@ -113,7 +109,7 @@ bibliography()
 
 # Reproducibility
 
-```{r 'reproducibiolty information'}
+```{r 'reproducibility information'}
 ## Reproducibility info
 proc.time()
 message(Sys.time())
