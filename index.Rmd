@@ -9,6 +9,8 @@ output:
 
 This repository contains the files for creating our video for the [Bioinformatics Peer Prize III hosted by Thinkable](https://bioinformatics-peer-prize-iii.thinkable.org/). The video was made using [ari](https://github.com/seankross/ari). The slides themselves were created with PowerPoint and then exported as PNG images. If you are interested in the slides, you can find most of them in this [recount workshop](https://speakerdeck.com/lcolladotor/bioconductor-2017-recount-workshop) presentation for the BioC2017 meeting.
 
+Check our full entry [here](https://www.thinkable.org/submission_entries/jqVzoaqW).
+
 # Video
 
 You can view the video we uploaded at [lcolladotor.github.io/biopeerprize2018/output.mp4](https://lcolladotor.github.io/biopeerprize2018/output.mp4) or simply view it here.
@@ -20,7 +22,7 @@ Your browser does not support the video tag.
 
 ## Video with another voice
 
-If you prefer to see the video with another voice, check the one made with `voice = "Joanna"`.
+If you prefer to see the video with another voice, check the one made with `voice = "Joanna"`. Most of the people we asked preferred this voice, which is the one we use in the final entry.
 
 <video width="720" height="405" controls>
   <source src="https://lcolladotor.github.io/biopeerprize2018/output_joanna.mp4" type="video/mp4">
