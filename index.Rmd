@@ -18,6 +18,16 @@ You can view the video we uploaded at [lcolladotor.github.io/biopeerprize2018/ou
 Your browser does not support the video tag.
 </video>
 
+## Video with another voice
+
+If you prefer to see the video with another voice, check the one made with `voice = "Joanna"`.
+
+<video width="720" height="405" controls>
+  <source src="https://lcolladotor.github.io/biopeerprize2018/output_joanna.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+
 
 # Create video
 
@@ -62,6 +72,14 @@ ari_spin(
     ari_files,
     ari_text,
     voice = "Joey"
+)
+
+## Create the video with another voice
+ari_spin(
+    ari_files,
+    ari_text,
+    voice = "Joanna",
+    output = "output_joanna.mp4"
 )
 ```
 
