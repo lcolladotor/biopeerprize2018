@@ -55,7 +55,7 @@ ari_spin(
 )
 ```
 
-You can view the video we uploaded at [INSERTLINKHERE](INSERTLINKHERE).
+You can view the video we uploaded [here](https://lcolladotor.github.io/biopeerprize2018/output.mp4).
 
 # References
 
