@@ -90,7 +90,7 @@ bib <- c(
 write.bibtex(bib, file = 'index.bib')
 ```
 
-The analyses were made possible thanks to:
+The website, video and project were made possible thanks to:
 
 * R `r citep(bib[['R']])`
 * `r CRANpkg('ari')` `r citep(bib[['ari']])`
