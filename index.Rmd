@@ -55,7 +55,16 @@ ari_spin(
 )
 ```
 
-You can view the video we uploaded [here](https://lcolladotor.github.io/biopeerprize2018/output.mp4).
+
+
+# Video
+
+You can view the video we uploaded at [lcolladotor.github.io/biopeerprize2018/output.mp4](https://lcolladotor.github.io/biopeerprize2018/output.mp4) or simply view it here.
+
+<video width="720" height="405" controls>
+  <source src="https://lcolladotor.github.io/biopeerprize2018/output.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 # References
 
